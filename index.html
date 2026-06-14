@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>子供が1日店長?! 親が部下?! その口出し営業妨害です | 江別市青年会議所</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --navy: #1B2A4A;
+      --yellow: #F5C800;
+      --bg-gray: #F2F2F2;
+      --white: #FFFFFF;
+      --navy-light: #2a3f6b;
+      --shadow: 0 8px 32px rgba(27, 42, 74, 0.12);
+      --shadow-lg: 0 16px 48px rgba(27, 42, 74, 0.18);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--navy);
+      background: var(--bg-gray);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== Geometric accents ===== */
+    .geo-triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      pointer-events: none;
+    }
+
+    .geo-line {
+      position: absolute;
+      background: var(--yellow);
+      transform: skewX(-20deg);
+      pointer-events: none;
+    }
+
+    /* ===== Fade-in animation ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: left 0.4s ease;
+    }
+
+    .btn:hover::after {
+      left: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--navy);
+      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--yellow);
+      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    }
+
+    .btn-outline:hover {
+      background: var(--yellow);
+      color: var(--navy);
+    }
+
+    /* ===== Section common ===== */
+    section {
+      position: relative;
+      padding: 5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      background: var(--navy);
+      padding: 0.35rem 1rem;
+      clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 1.5rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 40%, rgba(245, 200, 0, 0.08) 40%);
+      pointer-events: none;
+    }
+
+    .hero-triangle-1 {
+      top: 10%;
+      right: 5%;
+      border-width: 0 80px 140px 80px;
+      border-color: transparent transparent rgba(245, 200, 0, 0.15) transparent;
+    }
+
+    .hero-triangle-2 {
+      bottom: 15%;
+      left: 3%;
+      border-width: 60px 0 60px 100px;
+      border-color: transparent transparent transparent rgba(245, 200, 0, 0.1);
+    }
+
+    .hero-line-1 {
+      top: 20%;
+      left: -5%;
+      width: 200px;
+      height: 4px;
+      opacity: 0.6;
+    }
+
+    .hero-line-2 {
+      bottom: 30%;
+      right: 10%;
+      width: 120px;
+      height: 3px;
+      opacity: 0.4;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-catch {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
+      padding: 0.5rem 1.25rem;
+      margin-bottom: 1.5rem;
+      clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+      animation: pulse-badge 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-badge {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(245, 200, 0, 0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(245, 200, 0, 0); }
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-weight: 500;
+      color: var(--yellow);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 6vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 0 rgba(245, 200, 0, 0.2);
+    }
+
+    .hero-title .highlight {
+      color: var(--yellow);
+      display: block;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .free-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--white);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 1.1rem;
+      padding: 0.6rem 1.25rem;
+      border: 3px solid var(--yellow);
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    }
+
+    .free-badge-icon {
+      font-size: 1.3rem;
+    }
+
+    .hero-date {
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ===== Target message ===== */
+    .target {
+      background: var(--white);
+      position: relative;
+    }
+
+    .target::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--yellow),
+        var(--yellow) 10px,
+        var(--navy) 10px,
+        var(--navy) 20px
+      );
+    }
+
+    .handwritten-title {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .handwritten-title span {
+      position: relative;
+      display: inline-block;
+      transform: rotate(-1.5deg);
+    }
+
+    .handwritten-title span::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: -4%;
+      width: 108%;
+      height: 12px;
+      background: rgba(245, 200, 0, 0.35);
+      z-index: -1;
+      transform: skewX(-3deg);
+    }
+
+    .message-card {
+      background: var(--bg-gray);
+      border-left: 5px solid var(--yellow);
+      padding: 2.5rem 2rem;
+      position: relative;
+      box-shadow: var(--shadow);
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+    }
+
+    .message-card::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+      opacity: 0.5;
+    }
+
+    .message-text {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-weight: 500;
+      line-height: 2;
+    }
+
+    .message-text p {
+      margin-bottom: 0.75rem;
+    }
+
+    .message-text p:last-child {
+      margin-bottom: 0;
+      font-weight: 700;
+      color: var(--navy-light);
+    }
+
+    /* ===== Event details ===== */
+    .details {
+      background: var(--bg-gray);
+      position: relative;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .detail-item {
+      background: var(--white);
+      padding: 2rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+    }
+
+    .detail-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .detail-icon {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    .detail-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--yellow);
+      background: var(--navy);
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.08em;
+    }
+
+    .detail-value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    /* ===== Program ===== */
+    .program {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .program .section-label {
+      background: var(--yellow);
+      color: var(--navy);
+    }
+
+    .program .section-title {
+      color: var(--white);
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .program-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(245, 200, 0, 0.3);
+      padding: 2rem;
+      position: relative;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .program-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--yellow);
+    }
+
+    .program-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--yellow);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+
+    .program-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    /* ===== Contact / CTA ===== */
+    .contact {
+      background: var(--white);
+      position: relative;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .organizer-info {
+      margin-bottom: 2rem;
+    }
+
+    .organizer-name {
+      font-size: 1.3rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .organizer-desc {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .contact-list {
+      list-style: none;
+    }
+
+    .contact-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--bg-gray);
+    }
+
+    .contact-list li:last-child {
+      border-bottom: none;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-gray);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-link {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--yellow);
+    }
+
+    .contact-cta-box {
+      background: var(--navy);
+      color: var(--white);
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-cta-box::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      border: 4px solid rgba(245, 200, 0, 0.2);
+      transform: rotate(45deg);
+    }
+
+    .contact-cta-box::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 80px 80px;
+      border-color: transparent transparent rgba(245, 200, 0, 0.1) transparent;
+    }
+
+    .cta-heading {
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-sub {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-cta-box .btn-primary {
+      position: relative;
+      z-index: 1;
+      font-size: 1.15rem;
+      padding: 1.1rem 3rem;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--yellow);
+    }
+
+    .footer-org {
+      font-weight: 700;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      opacity: 0.5;
+      margin-top: 0.5rem;
+    }
+
+    /* ===== Decorative SVG strip ===== */
+    .deco-strip {
+      height: 8px;
+      background: var(--yellow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .deco-strip svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      section {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 5rem 1.25rem 3rem;
+      }
+
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .message-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .detail-item {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <div class="geo-triangle hero-triangle-1"></div>
+    <div class="geo-triangle hero-triangle-2"></div>
+    <div class="geo-line hero-line-1"></div>
+    <div class="geo-line hero-line-2"></div>
+
+    <div class="hero-content">
+      <p class="hero-catch fade-in">お子様の教育にお悩みの方、必見！</p>
+      <p class="hero-subtitle fade-in fade-in-delay-1">Capter1. 価値ある助言</p>
+      <h1 class="hero-title fade-in fade-in-delay-1">
+        子供が1日店長?!
+        <span class="highlight">親が部下?!</span>
+        その口出し営業妨害です
+      </h1>
+      <div class="hero-meta fade-in fade-in-delay-2">
+        <div class="free-badge">
+          <span class="free-badge-icon">🎉</span>
+          参加費 無料
+        </div>
+        <p class="hero-date">📅 2026年8月30日（金）14:00〜16:00</p>
+      </div>
+      <div class="hero-cta fade-in fade-in-delay-3">
+        <a href="#apply" class="btn btn-primary">申し込む →</a>
+        <a href="#details" class="btn btn-outline">詳細を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="deco-strip">
+    <svg viewBox="0 0 1200 8" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,8 100,0 200,8 300,0 400,8 500,0 600,8 700,0 800,8 900,0 1000,8 1100,0 1200,8 1200,8 0,8" fill="#1B2A4A"/>
+    </svg>
+  </div>
+
+  <!-- ===== TARGET MESSAGE ===== -->
+  <section class="target" id="message">
+    <div class="container">
+      <h2 class="handwritten-title fade-in">
+        <span>✏️ お子さんがいるあなたへ</span>
+      </h2>
+      <div class="message-card fade-in fade-in-delay-1">
+        <div class="message-text">
+          <p>お子さんの頑張ったに気づいていますか？？</p>
+          <p>あなたにも見守ってくれた大人がいたはずです。</p>
+          <p>今度はあなたが"その大人"になる番です。</p>
+          <p>子供が成長できる機会をこのイベントで！！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVENT DETAILS ===== -->
+  <section class="details" id="details">
+    <div class="container">
+      <span class="section-label fade-in">EVENT INFO</span>
+      <h2 class="section-title fade-in fade-in-delay-1">イベント詳細</h2>
+      <div class="details-grid">
+        <div class="detail-item fade-in fade-in-delay-1">
+          <div class="detail-icon">📅</div>
+          <div>
+            <span class="detail-label">DATE</span>
+            <p class="detail-value">2026年8月30日（金）<br>14:00〜16:00</p>
+          </div>
+        </div>
+        <div class="detail-item fade-in fade-in-delay-2">
+          <div class="detail-icon">📍</div>
+          <div>
+            <span class="detail-label">PLACE</span>
+            <p class="detail-value">江別市民会館<br>小ホール</p>
+          </div>
+        </div>
+        <div class="detail-item fade-in fade-in-delay-3">
+          <div class="detail-icon">💰</div>
+          <div>
+            <span class="detail-label">FEE</span>
+            <p class="detail-value">無料<br><small style="font-weight:400;font-size:0.85rem;">（事前申込制）</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAM ===== -->
+  <section class="program" id="program">
+    <div class="container">
+      <span class="section-label fade-in">PROGRAM</span>
+      <h2 class="section-title fade-in fade-in-delay-1">プログラム内容</h2>
+      <div class="program-grid">
+        <div class="program-card fade-in fade-in-delay-1">
+          <div class="program-number">1</div>
+          <p class="program-title">湯浅氏の公演<br>「子ども教育における再認識」</p>
+        </div>
+        <div class="program-card fade-in fade-in-delay-2">
+          <div class="program-number">2</div>
+          <p class="program-title">否定ゼロ！<br>子どもと一緒にアイデアを育てるグループワーク</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / APPLY ===== -->
+  <section class="contact" id="apply">
+    <div class="container">
+      <span class="section-label fade-in">CONTACT</span>
+      <h2 class="section-title fade-in fade-in-delay-1">お申し込み・お問い合わせ</h2>
+      <div class="contact-wrapper">
+        <div class="fade-in fade-in-delay-2">
+          <div class="organizer-info">
+            <p class="organizer-name">主催：江別市青年会議所</p>
+            <p class="organizer-desc">お気軽にお問い合わせください</p>
+          </div>
+          <ul class="contact-list">
+            <li>
+              <span class="contact-icon">📞</span>
+              <a href="tel:123-456-7890" class="contact-link">123-456-7890</a>
+            </li>
+            <li>
+              <span class="contact-icon">✉️</span>
+              <a href="mailto:hello@reallygreatsite.com" class="contact-link">hello@reallygreatsite.com</a>
+            </li>
+            <li>
+              <span class="contact-icon">🌐</span>
+              <a href="https://www.reallygreatsite.com" target="_blank" rel="noopener noreferrer" class="contact-link">www.reallygreatsite.com</a>
+            </li>
+          </ul>
+        </div>
+        <div class="contact-cta-box fade-in fade-in-delay-3">
+          <p class="cta-heading">参加無料・事前申込制</p>
+          <p class="cta-sub">定員に達し次第、受付を終了いたします</p>
+          <a href="mailto:hello@reallygreatsite.com?subject=イベント参加申込" class="btn btn-primary">今すぐ申し込む →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p class="footer-org">主催：江別市青年会議所</p>
+    <p class="footer-copy">&copy; 2026 江別市青年会議所 All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    (function () {
+      var fadeElements = document.querySelectorAll('.fade-in');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        fadeElements.forEach(function (el) {
+          observer.observe(el);
+        });
+      } else {
+        fadeElements.forEach(function (el) {
+          el.classList.add('visible');
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      window.addEventListener('load', function () {
+        var heroElements = document.querySelectorAll('.hero .fade-in');
+        heroElements.forEach(function (el, i) {
+          setTimeout(function () {
+            el.classList.add('visible');
+          }, 150 + i * 120);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
