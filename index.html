@@ -466,6 +466,50 @@
       transform: translateY(-6px) rotate(1deg);
     }
 
+    .program-blob:hover .program-tap-hint {
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
+    }
+
+    .program-hint {
+      text-align: center;
+      color: var(--navy);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin: -1rem 0 1.5rem;
+      opacity: 0.85;
+    }
+
+    .program-hint span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+
+    .program-tap-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 1rem;
+      padding: 0.4rem 0.9rem;
+      background: rgba(255, 255, 255, 0.22);
+      border: 2px dashed rgba(255, 255, 255, 0.75);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .program-tap-hint::after {
+      content: '→';
+      font-weight: 900;
+    }
+
     .program-blob:focus-visible {
       outline: 4px solid rgba(255, 255, 255, 0.9);
       outline-offset: 4px;
@@ -872,30 +916,34 @@
       <div class="section-heading fade-in">
         <h2>🎯 プログラム内容</h2>
       </div>
+      <p class="program-hint fade-in fade-in-delay-1"><span>👆 タップして詳しく見る</span></p>
       <div class="program-grid">
-        <div class="program-blob orange fade-in fade-in-delay-1" role="button" tabindex="0"
+        <div class="program-blob orange fade-in fade-in-delay-1" role="button" tabindex="0" aria-label="講話の詳細を見る"
           data-modal-title="① 講話：子どもの教育　見守り育て、意見を尊重する"
-          data-modal-body="ジュアサリレーションズ代表　壽箋章洋氏による講和を行っていただきます。\n北海道野幌高等学校の元校長である壽箋氏に、子どもの教育の大切さや、これまでの経験談などの講話を行っていただき、子どもたちが主体的に挑戦することの意義や、子どもたちの可能性を引き出すための考え方、見守り育てる重要性を学ぶことができできます。">
+          data-modal-body="ジュアサリレーションズ代表　壽淺章洋氏による講和を行っていただきます。\n北海道野幌高等学校の元校長である壽淺氏に、子どもの教育の大切さや、これまでの経験談などの講話を行っていただき、子どもたちが主体的に挑戦することの意義や、子どもたちの可能性を引き出すための考え方、見守り育てる重要性を学ぶことができできます。">
           <span class="program-num">1</span>
           <span class="program-label">LECTURE</span>
-          <p class="program-title">ジュアサリレーションズ代表<br>湯浅氏の公演<br>子どもの教育<br>見守り育て、意見を尊重する</p>
+          <p class="program-title">ジュアサリレーションズ代表<br>壽淺氏の公演<br>子どもの教育<br>見守り育て、意見を尊重する</p>
           <div class="program-icon">🎤</div>
+          <span class="program-tap-hint">詳しく見る</span>
         </div>
-        <div class="program-blob pink fade-in fade-in-delay-2" role="button" tabindex="0"
+        <div class="program-blob pink fade-in fade-in-delay-2" role="button" tabindex="0" aria-label="グループワークの詳細を見る"
           data-modal-title="② グループワーク：否定ゼロでアイデアを育てる"
           data-modal-body="子どもたちが主体となり、10月に実施する商売や挑戦内容についてグループで話し合いを行います。\n子どもたちが自ら考え、意見を出し合いながら具体的なアイデアへと形にしていきます。\nその際、大人は否定的ではなく、肯定的に子どもたちの意見を聞き、適切なアドバイスをし、子どもたちの意見をより良い意見へと導いてもらいます。\n【内容】\n１．グループでアイデアを出し合います。\n２．出てきたアイデアの中から「予算内で実現可能か」「必要なものはなにか」「安全に運営できるか」などグループ全員で確認します。この際、大人は「それはダメ」と判断するのではなく、「準備にどのくらいかかるかな？」や「ほかに方法はないかな？」などの問いかけを行い、子供たち自身が実現可能なのかを考えられるように支援してもらいます。\n３．さまざまなアイデアの中からやってみたいお店を一つ選びます。\n４．グループの代表者が全体の前でアイデアを発表します。">
           <span class="program-num">2</span>
           <span class="program-label">GROUP WORK</span>
           <p class="program-title">否定ゼロ！<br>子どもと一緒にアイデアを育てるグループワーク</p>
           <div class="program-icon">🧒</div>
+          <span class="program-tap-hint">詳しく見る</span>
         </div>
-        <div class="program-blob blue fade-in fade-in-delay-3" role="button" tabindex="0"
+        <div class="program-blob blue fade-in fade-in-delay-3" role="button" tabindex="0" aria-label="予告の詳細を見る"
           data-modal-title="③ 予告：10月の本番挑戦に向けて"
           data-modal-body="8月に参加していただいた皆さんに、10月に実際に商売していただきます。\n実際に商売をするグループを決め、その中で、1番利益の高かったグループには、優勝商品をお渡しします。\nまた、出た利益に関してはこども食堂や児童養護施設へ寄付させていただきます。">
           <span class="program-num">3</span>
           <span class="program-label">PREVIEW</span>
           <p class="program-title">10月イオン江別店での<br>グループワークで考えた内容を実勢！<br>優勝チームには豪華景品が！</p>
           <div class="program-icon">🏪</div>
+          <span class="program-tap-hint">詳しく見る</span>
         </div>
       </div>
     </div>
