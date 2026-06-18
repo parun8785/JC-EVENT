@@ -264,12 +264,18 @@
       background: var(--yellow);
       color: var(--navy);
       font-weight: 900;
-      font-size: clamp(0.8rem, 2.5vw, 0.95rem);
-      padding: 0.45rem 1.2rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-      box-shadow: 0 3px 0 rgba(0,0,0,0.1);
+      font-size: clamp(1.05rem, 4.5vw, 1.45rem);
+      padding: 1.1rem 2.4rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 5px 0 rgba(0, 0, 0, 0.12);
       animation: wobble 4s ease-in-out infinite;
+      clip-path: polygon(
+        50% 0%, 56% 12%, 68% 5%, 73% 18%, 87% 16%, 85% 30%,
+        98% 36%, 88% 50%, 98% 64%, 85% 70%, 87% 84%, 73% 82%,
+        68% 95%, 56% 88%, 50% 100%, 44% 88%, 32% 95%, 27% 82%,
+        13% 84%, 15% 70%, 2% 64%, 12% 50%, 2% 36%, 15% 30%,
+        13% 16%, 27% 18%, 32% 5%, 44% 12%
+      );
     }
 
     .hero-subtitle {
@@ -415,7 +421,7 @@
     }
 
     .message-text {
-      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      font-size: clamp(0.85rem, 2.2vw, 1rem);
       font-weight: 500;
       line-height: 2;
       text-align: center;
@@ -534,8 +540,10 @@
 
     .details-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 1rem;
+      max-width: 520px;
+      margin: 0 auto;
     }
 
     .detail-chip {
@@ -574,65 +582,12 @@
 
     /* ===== Contact / Apply ===== */
     .contact {
-      padding: 0 0 0;
-    }
-
-    .contact-layout {
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .contact-green {
-      background: var(--lime);
-      color: var(--white);
-      padding: 2rem 1.75rem;
-      border-radius: 35px 35px 35px 8px;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .contact-green h3 {
-      font-size: clamp(1.1rem, 3vw, 1.35rem);
-      font-weight: 900;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-
-    .contact-list {
-      list-style: none;
-    }
-
-    .contact-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.5rem 0;
-      font-weight: 700;
-      font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-    }
-
-    .contact-list a {
-      color: var(--white);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .contact-list a:hover {
-      opacity: 0.85;
-    }
-
-    .organizer-tag {
-      display: inline-block;
-      background: rgba(255,255,255,0.25);
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
+      padding: 0 0 2rem;
     }
 
     .apply-btn-wrap {
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 0;
     }
 
     .apply-btn-wrap .btn-red {
@@ -769,16 +724,6 @@
         padding: 2rem 1.25rem;
       }
 
-      .details-row {
-        grid-template-columns: 1fr;
-        max-width: 320px;
-        margin: 0 auto;
-      }
-
-      .contact-layout {
-        max-width: 100%;
-      }
-
       .float-emoji { font-size: 2rem; }
     }
 
@@ -886,8 +831,7 @@
 
     <div class="container">
       <div class="hero-blob fade-in">
-        <p class="hero-catch-bubble">お子様の教育にお悩みの方、必見！</p>
-        <p class="hero-subtitle">Capter1. 価値ある助言</p>
+        <p class="hero-catch-bubble">先着50名様限定！</p>
         <h1 class="hero-title">
           子供が1日社長!?
           <span class="line-navy">大人の皆さん！</span>
@@ -914,7 +858,7 @@
       <div class="message-card fade-in fade-in-delay-1">
         <div class="message-text">
           <p>お子さんの頑張ったに気づいていますか？？</p>
-          <p>あなたにも見守ってくれた大人がいたはずです。</p>
+          <p>あなたにも見守ってくれた大人がいたはず。</p>
           <p>今度はあなたが"その大人"になる番です。</p>
           <p>子供が成長できる機会をこのイベントで！！</p>
         </div>
@@ -966,17 +910,16 @@
       <div class="details-row">
         <div class="detail-chip fade-in fade-in-delay-1">
           <span class="icon">📅</span>
-          <span class="label">DATE</span>
+          <span class="label">日時</span>
           <span class="value">2026年8月30日（金）<br>14:00〜16:00</span>
         </div>
         <div class="detail-chip fade-in fade-in-delay-2">
           <span class="icon">📍</span>
-          <span class="label">PLACE</span>
+          <span class="label">場所</span>
           <span class="value">江別市民会館<br>小ホール</span>
         </div>
         <div class="detail-chip fade-in fade-in-delay-3">
           <span class="icon">💰</span>
-          <span class="label">FEE</span>
           <span class="value">無料<br><small style="font-weight:500;font-size:0.8rem;">（事前申込制）</small></span>
         </div>
       </div>
@@ -986,17 +929,6 @@
   <!-- ===== CONTACT / APPLY ===== -->
   <section class="contact pattern-bg" id="apply">
     <div class="container">
-      <div class="contact-layout fade-in">
-        <div class="contact-green">
-          <span class="organizer-tag">主催：江別青年会議所</span>
-          <h3>📍 江別市民会館 小ホール</h3>
-          <ul class="contact-list">
-            <li>📞 <a href="tel:123-456-7890">123-456-7890</a></li>
-            <li>✉️ <a href="mailto:hello@reallygreatsite.com">hello@reallygreatsite.com</a></li>
-            <li>🌐 <a href="https://www.reallygreatsite.com" target="_blank" rel="noopener noreferrer">www.reallygreatsite.com</a></li>
-          </ul>
-        </div>
-      </div>
       <div class="apply-btn-wrap fade-in fade-in-delay-2">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdkGIu3SygYf0LSAkraV7OJJbfwftT3aYC6GM1wmMbdPsh0TA/viewform?usp=publish-editor" class="btn btn-red" target="_blank" rel="noopener noreferrer">今すぐ申し込む →</a>
       </div>
@@ -1005,7 +937,7 @@
 
   <!-- ===== FOOTER ===== -->
   <footer>
-    <p class="footer-org">主催：江別市青年会議所</p>
+    <p class="footer-org">主催：一般社団法人江別市青年会議所　後援：江別市教育委員会</p>
     <p class="footer-copy">&copy; 2026 江別青年会議所 All Rights Reserved.</p>
   </footer>
 
