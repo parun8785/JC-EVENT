@@ -52,7 +52,6 @@
       background: #FFE566;
     }
 
-    /* 左上：いちご型レッド＋シード */
     .bg-strawberry {
       position: absolute;
       top: -40px;
@@ -61,7 +60,6 @@
       height: 200px;
     }
 
-    /* ピンク＋赤水玉エリア */
     .bg-pink-dots {
       position: absolute;
       background-color: #FF6B9D;
@@ -97,7 +95,6 @@
       opacity: 0.85;
     }
 
-    /* オレンジの筆致ブラシ */
     .bg-brush {
       position: absolute;
       border-radius: 50%;
@@ -135,7 +132,6 @@
       border-radius: 55% 45% 60% 40% / 40% 60% 40% 60%;
     }
 
-    /* くねくね線・スウォッシュ SVG */
     .bg-deco-svg {
       position: absolute;
     }
@@ -147,12 +143,10 @@
     .bg-deco-svg.sq5 { bottom: 18%; left: 30%; width: 120px; opacity: 0.75; }
     .bg-deco-svg.sq6 { top: 32%; right: 28%; width: 100px; opacity: 0.7; }
 
-    /* 青い渦巻き */
     .bg-deco-svg.swirl1 { top: 14%; right: 32%; width: 70px; opacity: 0.75; }
     .bg-deco-svg.swirl2 { bottom: 35%; left: 8%; width: 60px; opacity: 0.65; }
     .bg-deco-svg.swirl3 { top: 75%; right: 22%; width: 55px; opacity: 0.6; }
 
-    /* 白いキラキラ点 */
     .bg-sparkle {
       position: absolute;
       width: 8px;
@@ -182,7 +176,6 @@
       background: transparent;
     }
 
-    /* ===== Fade-in ===== */
     .fade-in {
       opacity: 0;
       transform: translateY(28px);
@@ -196,7 +189,6 @@
     .fade-in-delay-2 { transition-delay: 0.2s; }
     .fade-in-delay-3 { transition-delay: 0.3s; }
 
-    /* ===== Blob shapes ===== */
     .blob {
       border-radius: 58% 42% 38% 62% / 52% 48% 52% 48%;
     }
@@ -218,7 +210,6 @@
       padding: 3.5rem 0;
     }
 
-    /* ===== Floating emojis ===== */
     .float-emoji {
       position: absolute;
       font-size: clamp(2rem, 5vw, 3.5rem);
@@ -242,7 +233,6 @@
       50% { transform: rotate(2deg); }
     }
 
-    /* ===== HERO ===== */
     .hero {
       padding: 3rem 0 4rem;
       overflow: hidden;
@@ -312,9 +302,26 @@
       border-radius: 45% 55% 52% 48% / 48% 45% 55% 52%;
       border: 4px dashed var(--white);
       transform: rotate(-8deg);
-      margin: 0.5rem auto 1rem;
+      margin: 0;
       box-shadow: var(--shadow);
       animation: wobble 3s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    .hero-info-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .hero-info-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
     }
 
     .hero-date {
@@ -328,11 +335,58 @@
     }
 
     .hero-cta {
-      margin-top: 1.5rem;
+      margin-top: 0;
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
       justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+      .hero-info-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-info-col {
+        align-items: center;
+      }
+    }
+
+    /* ===== Scroll indicator (NEW) ===== */
+    .scroll-indicator {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 1.5rem;
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      opacity: 0.85;
+    }
+
+    .scroll-indicator .arrow-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+      animation: scroll-bounce 1.6s ease-in-out infinite;
+    }
+
+    .scroll-indicator .arrow-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    @keyframes scroll-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
     }
 
     .btn {
@@ -373,7 +427,6 @@
       box-shadow: 0 3px 0 rgba(27, 42, 74, 0.2);
     }
 
-    /* ===== Section titles ===== */
     .section-heading {
       text-align: center;
       margin-bottom: 2rem;
@@ -397,7 +450,6 @@
       box-shadow: 0 4px 0 #E6B800;
     }
 
-    /* ===== Target message ===== */
     .target {
       padding-top: 1rem;
     }
@@ -434,7 +486,6 @@
       color: var(--pink);
     }
 
-    /* ===== Program blobs ===== */
     .program {
       padding: 2rem 0 3.5rem;
     }
@@ -577,7 +628,6 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    /* ===== Event details strip ===== */
     .details {
       padding: 0 0 3rem;
     }
@@ -624,7 +674,6 @@
       line-height: 1.5;
     }
 
-    /* ===== Contact / Apply ===== */
     .contact {
       padding: 0 0 2rem;
     }
@@ -639,7 +688,6 @@
       padding: 1rem 2.5rem;
     }
 
-    /* ===== Footer ===== */
     footer {
       background: var(--blue);
       color: var(--white);
@@ -650,7 +698,6 @@
       z-index: 1;
     }
 
-    /* ===== Modal ===== */
     .modal[hidden] { display: none; }
 
     .modal {
@@ -745,14 +792,12 @@
       margin-top: 0.25rem;
     }
 
-    /* ===== SVG swirls ===== */
     .swirl {
       position: absolute;
       pointer-events: none;
       opacity: 0.5;
     }
 
-    /* ===== Responsive ===== */
     @media (max-width: 768px) {
       .bg-pink-dots.tl { width: 220px; height: 180px; }
       .bg-pink-dots.tr { width: 180px; height: 150px; }
@@ -791,7 +836,6 @@
 </head>
 <body>
 
-  <!-- フライヤー風背景デコレーション -->
   <div class="page-bg" aria-hidden="true">
     <div class="bg-pink-dots tl"></div>
     <div class="bg-pink-dots tr"></div>
@@ -815,7 +859,6 @@
     <div class="bg-brush b2"></div>
     <div class="bg-brush b3"></div>
 
-    <!-- 黄色くねくね -->
     <svg class="bg-deco-svg sq1" viewBox="0 0 140 60" xmlns="http://www.w3.org/2000/svg">
       <path d="M5 45 Q35 5 65 40 Q95 70 130 20" fill="none" stroke="#FFD54F" stroke-width="9" stroke-linecap="round"/>
     </svg>
@@ -835,7 +878,6 @@
       <path d="M5 32 Q25 10 50 28 Q75 42 92 15" fill="none" stroke="#E53935" stroke-width="6" stroke-linecap="round"/>
     </svg>
 
-    <!-- 白い手書きカール -->
     <svg class="bg-deco-svg sq1" style="top:22%;left:55%;width:90px;opacity:0.7" viewBox="0 0 90 50" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 35 Q25 10 45 30 Q60 45 78 20" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/>
     </svg>
@@ -843,7 +885,6 @@
       <path d="M8 30 Q22 8 40 25 Q55 38 70 15" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/>
     </svg>
 
-    <!-- 青い渦巻き -->
     <svg class="bg-deco-svg swirl1" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
       <path d="M55 15 Q35 5 20 25 Q5 45 30 55 Q50 62 58 42" fill="none" stroke="#42A5F5" stroke-width="5" stroke-linecap="round"/>
     </svg>
@@ -881,14 +922,27 @@
           <span class="line-navy">大人の皆さん！</span>
           その口出し営業妨害です<br>Capter1:大人が導く価値ある助言
         </h1>
-        <div class="free-badge fade-in fade-in-delay-1">
-          参加費<br>無料
+        <div class="hero-info-row">
+          <div class="free-badge fade-in fade-in-delay-1">
+            参加費<br>無料
+          </div>
+          <div class="hero-info-col">
+            <p class="hero-date fade-in fade-in-delay-1">📅 2026年8月30日（金）14:00〜16:00</p>
+            <div class="hero-cta fade-in fade-in-delay-2">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdkGIu3SygYf0LSAkraV7OJJbfwftT3aYC6GM1wmMbdPsh0TA/viewform?usp=publish-editor" class="btn btn-red" target="_blank" rel="noopener noreferrer">申し込む →</a>
+            </div>
+          </div>
         </div>
-        <p class="hero-date">📅 2026年8月30日（金）14:00〜16:00</p>
-        <div class="hero-cta fade-in fade-in-delay-2">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdkGIu3SygYf0LSAkraV7OJJbfwftT3aYC6GM1wmMbdPsh0TA/viewform?usp=publish-editor" class="btn btn-red" target="_blank" rel="noopener noreferrer">申し込む →</a>
-          <a href="#program" class="btn btn-white">内容を見る</a>
-        </div>
+
+        <!-- 追加：スクロール誘導矢印 -->
+        <a href="#program" class="scroll-indicator fade-in fade-in-delay-3" aria-label="下にスクロールしてプログラム内容を見る">
+          <span>内容を見る</span>
+          <span class="arrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </span>
+        </a>
       </div>
     </div>
   </section>
